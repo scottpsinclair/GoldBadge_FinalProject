@@ -15,6 +15,7 @@ namespace _02_ClaimUI
         //Method that runs/starts the application
         public void Run()
         {
+            SeedContnetList();
             Menu();
         }
 
@@ -40,7 +41,7 @@ namespace _02_ClaimUI
                         DisplayAllClaims();
                         break;
                     case "2":
-                        //TakeCareOfNextClaim();
+                        TakeCareOfNextClaim();
                         break;
                     case "3":
                         EnterNewClaim();
@@ -62,16 +63,42 @@ namespace _02_ClaimUI
         {
             Console.Clear();
 
-            List<Claim> listOfClaims = _listOfClaims.GetClaimsList();
+            Queue<Claim> listOfClaims = _listOfClaims.GetClaimsList();
+
+                Console.WriteLine("ClaimID | Type | Description | Amount | DateOfAccident | DateOfClaim | IsValid");
 
             foreach (Claim content in listOfClaims)
             {
-                Console.WriteLine($"ClaimID: {content.ClaimID}", $"Type: {content.TypeOfClaim}", $"Description: {content.Description}", $"Amount: {content.ClaimAmount}", $"Date Of Incident: {content.DateOfIncident}",
-                    $"Date of Claim: {content.DateOfClaim}", $"IsValid: {content.IsValid}");
+                Console.WriteLine(content.ClaimID + "|" + content.TypeOfClaim + "|" + content.Description + "|" + content.ClaimAmount + "|" + content.DateOfIncident.ToString("d") + "|" +
+                 content.DateOfClaim.ToString("d") +  "|" + content.IsValid);
             }
         }
 
         //TakeCareOfNextClaim
+
+        private void TakeCareOfNextClaim()
+        {
+            Console.Clear();
+            
+            Claim listOfClaims = _listOfClaims.ViewNextClaim();
+
+            
+            
+                
+            
+
+            Console.WriteLine("Do you want to deal with this claim now(y/n)?");
+            string userInput = Console.ReadLine().ToLower();
+
+            if (userInput == "y")
+            {
+                 _listOfClaims.RemoveTopClaim();
+            }
+            if (userInput == "n")
+            {
+                Menu();
+            }
+        }
 
         //EnterNewClaim
         private void EnterNewClaim()
@@ -92,21 +119,20 @@ namespace _02_ClaimUI
 
             string stringClaimType = Console.ReadLine();
 
-            ClaimType claimType;
-
+          
             switch (stringClaimType)
             {
                 case "1":
-                    claimType = ClaimType.Car;
+                    newContent.TypeOfClaim = ClaimType.Car;
                     break;
                 case "2":
-                    claimType = ClaimType.Home;
+                    newContent.TypeOfClaim = ClaimType.Home;
                     break;
                 case "3":
-                    claimType = ClaimType.Theft;
+                    newContent.TypeOfClaim = ClaimType.Theft;
                     break;
                 default:
-                    claimType = ClaimType.Car;
+                    newContent.TypeOfClaim = ClaimType.Car;
                     break;
             }
 
@@ -130,7 +156,8 @@ namespace _02_ClaimUI
             newContent.DateOfClaim = DateTime.Parse(claimAsString);
 
             //IsValid
-            newContent.IsValid = Console.();
+            Console.WriteLine(newContent.IsValid);
+
 
             _listOfClaims.EnterNewClaim(newContent);
         }
@@ -141,9 +168,13 @@ namespace _02_ClaimUI
         //Seed Method
         private void SeedContnetList()
         {
-            Claim car = new Claim(1, ClaimType.Car, "Car accident on 465", 400.00m, (2021, 07, 01), 07 / 06 / 2021, true);
+            Claim car = new Claim(1, ClaimType.Car, "Car accident on 465", 400.00m, new DateTime(2021, 07, 01), new DateTime(2021, 07, 06));
+            Claim home = new Claim(2, ClaimType.Home, "Oak tree fell on house", 2000.00m, new DateTime(2021, 05, 30), new DateTime(2021, 06, 15));
+            Claim theft = new Claim(3, ClaimType.Theft, "Stolen apple pie", 10.00m, new DateTime(2021, 06, 12), new DateTime(2021, 06, 13));
 
             _listOfClaims.EnterNewClaim(car);
+            _listOfClaims.EnterNewClaim(home);
+            _listOfClaims.EnterNewClaim(theft);
         }
     }
 }

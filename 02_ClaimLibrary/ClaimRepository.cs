@@ -12,18 +12,29 @@ namespace _02_ClaimLibrary
         //2. Take care of next claim
         //3. Enter a new claim
 
-        private List<Claim> _listOfClaims = new List<Claim>();
+        private Queue<Claim> _listOfClaims = new Queue<Claim>();
 
         //Create
         public void EnterNewClaim(Claim content)
         {
-            _listOfClaims.Add(content);
+            _listOfClaims.Enqueue(content);
         }
 
         //Read
-        public List<Claim> GetClaimsList()
+        public Queue<Claim> GetClaimsList()
         {
             return _listOfClaims;
         }
+
+        public Claim ViewNextClaim()
+        {
+            return _listOfClaims.Peek();        
+        }
+
+        public void RemoveTopClaim()
+        {
+            _listOfClaims.Dequeue();
+        }
+
     }
 }

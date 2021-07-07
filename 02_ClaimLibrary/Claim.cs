@@ -50,9 +50,7 @@ namespace _02_ClaimLibrary
                 
                 return false;
             }
-            set
-            {
-            }
+            
         }
 
         
@@ -60,7 +58,7 @@ namespace _02_ClaimLibrary
         //Constructor Empty
         public Claim() { }
         //Constructor Full
-        public Claim(int claimId, ClaimType typeOfClaim, string description, decimal claimAmount, DateTime dateOfIncident, DateTime dateOfClaim, bool isValid)
+        public Claim(int claimId, ClaimType typeOfClaim, string description, decimal claimAmount, DateTime dateOfIncident, DateTime dateOfClaim)
         {
             ClaimID = claimId;
             TypeOfClaim = typeOfClaim;
@@ -68,7 +66,7 @@ namespace _02_ClaimLibrary
             ClaimAmount = claimAmount;
             DateOfIncident = dateOfIncident;
             DateOfClaim = dateOfClaim;
-            IsValid = isValid;
+            
         }
     }
 }
