@@ -7,7 +7,7 @@
     <ProjectGuid>{3D9FD4C7-701D-4AAF-89D7-F85B45A91DEC}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>_03_BadgeUI</RootNamespace>
-    <AssemblyName>_03_BadgeUI</AssemblyName>
+    <AssemblyName>03_BadgeUI</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
+    <Compile Include="ProgramUI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -38,6 +38,7 @@ namespace _02_ClaimLibrary
             get; set;
         }
         public DateTime DateOfClaim
+
         {
             get; set;
         }

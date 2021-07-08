@@ -81,12 +81,7 @@ namespace _02_ClaimUI
             Console.Clear();
             
             Claim listOfClaims = _listOfClaims.ViewNextClaim();
-
-            
-            
-                
-            
-
+                                                     
             Console.WriteLine("Do you want to deal with this claim now(y/n)?");
             string userInput = Console.ReadLine().ToLower();
 
@@ -163,8 +158,6 @@ namespace _02_ClaimUI
         }
 
 
-
-
         //Seed Method
         private void SeedContnetList()
         {
@@ -178,10 +171,3 @@ namespace _02_ClaimUI
         }
     }
 }
-//ClaimID
-//ClaimType
-//Description
-//ClaimAmount
-//DateOfIncident
-//DateOfClaim
-//IsValid
